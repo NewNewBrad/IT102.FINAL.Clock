@@ -2,72 +2,87 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title></title>
-<!-- JQUERY USED TO LOAD THE SCRIPT ON STARTUP
- https://www.w3schools.com/jquery/jquery_get_started.asp
-https://www.w3schools.com/jquery/event_ready.asp
- -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<title>IT102 FINAL - JavaScript Clock - Brad Jones</title>
+	<style type="text/css">
 
+	body{
+		background-color: #333333;
+	}
 
-<script type="text/javascript">
-$(document).ready( function() {
-
-  function displayTime() {
-    var currentTime = new Date();
-    var hours = currentTime.getHours();
-    var meridiem = "AM";
-		if (hours > 12) {
-    	hours = hours - 12;
-    	meridiem = "PM";
-		}
-		if (hours === 0) {
-    	hours = 12;    
-		}
-
-    var minutes = currentTime.getMinutes();
-    var seconds = currentTime.getSeconds();                   
-		if (seconds < 10) {
-    	seconds = "0" + seconds;
-		}
-
-    // This gets a "handle" to the clock div in our HTML
-    var clockDiv = document.getElementById('clock');
-
-    // Then we set the text inside the clock div 
-    // to the hours, minutes, and seconds of the current time
-    clockDiv.innerText = hours + ":" + minutes + ":" + seconds + " " + meridiem;
-
-    setInterval(displayTime, 1000);
-  }
-
-  // This runs the displayTime function the first time
-  displayTime();
-
-});
-</script>
-<style>
-body {
-    background-color: #80d4ea;
-}
-
-#clock {
-    height: 100px;
-    width: 800px;
-    margin: auto;
-    position: absolute;
-    top: 0; left: 0; bottom: 0; right: 0;
-    padding-top: 70px;
-    font-family: courier, monospace;
-    text-align: center;
-    color: white;
-    font-size: 100px;
-}
-
-
-</style>
+	#clock{
+		background-color: #0085B8;
+		height: 200px;
+		width: 800px;
+		margin: auto;
+		position: absolute;
+		top: 0; left: 0; bottom: 0; right: 0;
+		padding-top: 85px;
+		font-family: garamond, baskerville, courier, monospace;
+		text-align: center;
+		color: #dddddd;
+		font-size: 100px;
+	}
+			
+	</style>
 </head>
 <body>
-<div id='clock'></div>
+	
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+//JQuery and AJax to run the script when the page first loads
+// https://www.w3schools.com/jquery/jquery_get_started.asp
+//www.w3schools.com/jquery/event_ready.asp
+</script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+	var showTime = function showTime(){
+		var currentTime = new Date();
+		// Date and Time methods pulled from:
+		//https://www.w3schools.com/jsref/jsref_obj_date.asp
+		
+		var hours = currentTime.getHours();
+		var AMPM = "AM" //Determines AM or PM and displays accordingly
+			//if statements used to display 12hr clock instead of military time
+			if (hours > 12){
+				hours = hours - 12
+			}
+			if (hours === 0) {
+				hours = 12;// shows Noon as 12 and not 0
+			}
+		
+		var minutes = currentTime.getMinutes();
+			//If statment to add 0 in front of single digit minutes
+			if (minutes < 10){
+				minutes = "0" + minutes;
+			}
+		
+		var seconds = currentTime.getSeconds();
+			//If statement to add 0 in front of single digit seconds
+			if (seconds < 10){
+				seconds = "0" + seconds;
+			}
+
+		var clock = document.getElementById("clock")
+		clock.innerText = hours + ":" + minutes + ":" + seconds + " " + AMPM;
+		//displays to the HTML container with id="clock"
+		setInterval(showTime, 1000);
+		//Found this when I was working on the first BlackJack Assignment. Knew I wanted to do a clock as soon as I saw it. 
+		//https://www.w3schools.com/jsref/obj_window.asp
+
+		}//End of showTime();
+
+
+
+	showTime()
+	//Runs the function for the first time on page ready.
+
+	}); //End of (document).ready(funtion(){});
+
+
+	</script>
+
+<div id="clock"></div>
+
+
 </body>
 </html>
