@@ -39,7 +39,10 @@
 		var currentTime = new Date();
 		// Date and Time methods pulled from:
 		//https://www.w3schools.com/jsref/jsref_obj_date.asp
-		
+		var weekDay = currentTime.getDay();
+		var monthDay = currentTime.getDate();
+		var month = currenTime.getMonth();
+		var year = currentTime.getFullYear();
 		var hours = currentTime.getHours();
 		var AMPM = "AM" //Determines AM or PM and displays accordingly
 			//if statements used to display 12hr clock instead of military time
