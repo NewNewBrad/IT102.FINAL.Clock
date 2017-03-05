@@ -3,6 +3,13 @@
 <head>
 	<meta charset="UTF-8">
 	<title>IT102 FINAL - JavaScript Clock - Brad Jones</title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+	//JQuery and AJax to run the script when the page first loads
+	// https://www.w3schools.com/jquery/jquery_get_started.asp
+	//www.w3schools.com/jquery/event_ready.asp
+	</script>
+
 	<style type="text/css">
 
 	body{
@@ -20,125 +27,134 @@
 		font-family: garamond, baskerville, courier, monospace;
 		text-align: center;
 		color: #dddddd;
-		font-size: 100px;
+		font-size: 45px;
 	}
 			
 	</style>
 </head>
+
+
 <body>
-	
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
-//JQuery and AJax to run the script when the page first loads
-// https://www.w3schools.com/jquery/jquery_get_started.asp
-//www.w3schools.com/jquery/event_ready.asp
-</script>
-
-<script type="text/javascript">
-	$(document).ready(function() {
-	var showTime = function showTime(){
-		var currentTime = new Date();
-		// Date and Time methods pulled from:
-		//https://www.w3schools.com/jsref/jsref_obj_date.asp
-		var weekDay = currentTime.getDay();
-			if (weekDay == 0){
-				weekDay = "Sunday";
-			}
-			if (weekDay == 1){
-				weekDay = "Monday";
-			}
-			if (weekDay == 2){
-				weekDay = "Tuesday";
-			}
-			if (weekDay == 3){
-				weekDay = "Wednesday";
-			}
-			if (weekDay == 4){
-				weekDay = "Thursday";
-			}
-			if (weekDay == 5){
-				weekDay = "Friday";
-			}
-			if (weekDay == 6){
-				weekDay = "Saturday";
-			}
-		var monthDay = currentTime.getDate();
-		var month = currenTime.getMonth();
-			if (month == 0){
-				month = "January"
-			}
-			if (month == 1){
-				month = "February"
-			}
-			if (month == 2){
-				month = "March"
-			}
-			if (month == 3){
-				month = "April"
-			}
-			if (month == 4){
-				month = "May"
-			}
-			if (month == 5){
-				month = "June"
-			}
-			if (month == 6){
-				month = "July"
-			}
-			if (month == 7){
-				month = "August"
-			}
-			if (month == 8){
-				month = "September"
-			}
-			if (month == 9){
-				month = "October"
-			}
-			if (month == 10){
-				month = "November"
-			}
-			if (month == 11){
-				month = "December"
-			}
-		var year = currentTime.getFullYear();
-		var hours = currentTime.getHours();
-		var AMPM = "AM" //Determines AM or PM and displays accordingly
-			//if statements used to display 12hr clock instead of military time
-			if (hours > 12){
-				hours = hours - 12
-			}
-			if (hours === 0) {
-				hours = 12;// shows Noon as 12 and not 0
-			}
+	<script type="text/javascript">
+		$(document).ready(function() {
+		var showTime = function showTime(){
+			var currentTime = new Date();
+			// Date and Time methods pulled from:
+			//https://www.w3schools.com/jsref/jsref_obj_date.asp
+			var weekDay = currentTime.getDay();
+			//If statments to display weekday names.
+				if (weekDay == 6){
+					weekDay = "Sunday";
+				}
+				if (weekDay == 0){
+					weekDay = "Monday";
+				}
+				if (weekDay == 1){
+					weekDay = "Tuesday";
+				}
+				if (weekDay == 2){
+					weekDay = "Wednesday";
+				}
+				if (weekDay == 3){
+					weekDay = "Thursday";
+				}
+				if (weekDay == 4){
+					weekDay = "Friday";
+				}
+				if (weekDay == 5){
+					weekDay = "Saturday";
+				}
+			var monthDay = currentTime.getDate();
+			var dateSubscript = "st"
+				if (monthDay === 1 || monthDay === 21 || monthDay === 31){
+					dateSubscript = "st"
+				}
+				if (monthDay === 2 || monthDay === 22){
+					dateSubscript = "nd"
+				}
+				if (monthDay === 3 || monthDay === 23){
+					dateSubscript = "rd"
+				}
+				else{
+					dateSubscript = "th"
+				}
+			//adding the subscript to the monthDay
+			var month = currentTime.getMonth();
+			//If statments to display month names.
+				if (month === 0){
+					month = "January"
+				}
+				if (month === 1){
+					month = "February"
+				}
+				if (month === 2){
+					month = "March"
+				}
+				if (month === 3){
+					month = "April"
+				}
+				if (month === 4){
+					month = "May"
+				}
+				if (month === 5){
+					month = "June"
+				}
+				if (month === 6){
+					month = "July"
+				}
+				if (month === 7){
+					month = "August"
+				}
+				if (month === 8){
+					month = "September"
+				}
+				if (month === 9){
+					month = "October"
+				}
+				if (month === 10){
+					month = "November"
+				}
+				if (month === 11){
+					month = "December"
+				}
+			var year = currentTime.getFullYear();
+			var hours = currentTime.getHours();
+			var AMPM = "AM" //Determines AM or PM and displays accordingly
+				//if statements used to display 12hr clock instead of military time
+				if (hours > 12){
+					hours = hours - 12
+					AMPM = "PM"
+				}
+				if (hours === 0) {
+					hours = 12;// shows Noon as 12 and not 0
+				}
 		
-		var minutes = currentTime.getMinutes();
-			//If statment to add 0 in front of single digit minutes
-			if (minutes < 10){
-				minutes = "0" + minutes;
-			}
+			var minutes = currentTime.getMinutes();
+				//If statment to add 0 in front of single digit minutes
+				if (minutes < 10){
+					minutes = "0" + minutes;
+				}
 		
-		var seconds = currentTime.getSeconds();
-			//If statement to add 0 in front of single digit seconds
-			if (seconds < 10){
-				seconds = "0" + seconds;
-			}
+			var seconds = currentTime.getSeconds();
+				//If statement to add 0 in front of single digit seconds
+				if (seconds < 10){
+					seconds = "0" + seconds;
+				}
 
-		var clock = document.getElementById("clock")
-		clock.innerText = hours + ":" + minutes + ":" + seconds + " " + AMPM;
-		//displays to the HTML container with id="clock"
-		setInterval(showTime, 1000);
-		//Found this when I was working on the first BlackJack Assignment. Knew I wanted to do a clock as soon as I saw it. 
-		//https://www.w3schools.com/jsref/obj_window.asp
+			var clock = document.getElementById("clock")
 
-		}//End of showTime();
+			clock.innerText ="Today is " + weekDay + " the " + monthDay + dateSubscript + " of " + month + ", " + year + ".  The time is now " + hours + ":" + minutes + ":" + seconds + " " + AMPM;
+			//displays to the HTML container with id="clock"
+			setInterval(showTime, 1000);
+			//Found this when I was working on the first BlackJack Assignment. Knew I wanted to do a clock as soon as I saw it. 
+			//https://www.w3schools.com/jsref/obj_window.asp
 
+			}//End of showTime();
 
+			showTime()
+			//Runs the function for the first time on page ready.
 
-	showTime()
-	//Runs the function for the first time on page ready.
-
-	}); //End of (document).ready(funtion(){});
-
-
+		}); //End of (document).ready(funtion(){});
 	</script>
 
 <div id="clock"></div>
