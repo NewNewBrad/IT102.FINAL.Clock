@@ -40,8 +40,65 @@
 		// Date and Time methods pulled from:
 		//https://www.w3schools.com/jsref/jsref_obj_date.asp
 		var weekDay = currentTime.getDay();
+			if (weekDay == 0){
+				weekDay = "Sunday";
+			}
+			if (weekDay == 1){
+				weekDay = "Monday";
+			}
+			if (weekDay == 2){
+				weekDay = "Tuesday";
+			}
+			if (weekDay == 3){
+				weekDay = "Wednesday";
+			}
+			if (weekDay == 4){
+				weekDay = "Thursday";
+			}
+			if (weekDay == 5){
+				weekDay = "Friday";
+			}
+			if (weekDay == 6){
+				weekDay = "Saturday";
+			}
 		var monthDay = currentTime.getDate();
 		var month = currenTime.getMonth();
+			if (month == 0){
+				month = "January"
+			}
+			if (month == 1){
+				month = "February"
+			}
+			if (month == 2){
+				month = "March"
+			}
+			if (month == 3){
+				month = "April"
+			}
+			if (month == 4){
+				month = "May"
+			}
+			if (month == 5){
+				month = "June"
+			}
+			if (month == 6){
+				month = "July"
+			}
+			if (month == 7){
+				month = "August"
+			}
+			if (month == 8){
+				month = "September"
+			}
+			if (month == 9){
+				month = "October"
+			}
+			if (month == 10){
+				month = "November"
+			}
+			if (month == 11){
+				month = "December"
+			}
 		var year = currentTime.getFullYear();
 		var hours = currentTime.getHours();
 		var AMPM = "AM" //Determines AM or PM and displays accordingly
