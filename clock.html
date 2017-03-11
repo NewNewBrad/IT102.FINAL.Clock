@@ -130,10 +130,11 @@
 				//if statements used to display 12hr clock instead of military time
 				if (hours > 12){
 					hours = hours - 12
-					AMPM = "PM"
+					AMPM = "PM";
 				}
 				if (hours === 0) {
 					hours = 12;// shows Noon as 12 and not 0
+					AMPM = 'AM';
 				}
 		
 			var minutes = currentTime.getMinutes();
